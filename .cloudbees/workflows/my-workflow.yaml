@@ -3,6 +3,10 @@ kind: workflow
 name: My workflow
 on:
   workflow_dispatch:
+
+permissions:
+  scm-token-own: read
+  scm-token-org: read
 jobs:
   build:
     steps:
@@ -11,3 +15,10 @@ jobs:
         shell: sh
         run: |
           echo "hello world!!"
+      - name: Get source code
+        uses: cloudbees-io/checkout@v1
+      - name: Build
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          ls -la
