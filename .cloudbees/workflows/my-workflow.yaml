@@ -20,3 +20,4 @@ jobs:
         shell: sh
         run: |
           ls -la
+          echo Hi!
